@@ -5,12 +5,10 @@ import jakarta.persistence.Entity;
 import lombok.Getter;
 import lombok.Setter;
 
-@Entity(name = "COMPUTER")
+@Entity(name = "HDD")
 @Getter
 @Setter
-public class Computer extends AbstractBaseEntityProduct {
-
+public class HDD extends AbstractBaseEntityProduct {
     @Column()
-    String formComputer;
-
+    Integer size;
 }

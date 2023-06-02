@@ -5,12 +5,10 @@ import jakarta.persistence.Entity;
 import lombok.Getter;
 import lombok.Setter;
 
-@Entity(name = "COMPUTER")
+@Entity(name = "Displays")
 @Getter
 @Setter
-public class Computer extends AbstractBaseEntityProduct {
-
+public class Display extends AbstractBaseEntityProduct {
     @Column()
-    String formComputer;
-
+    Integer Diagonal;
 }
