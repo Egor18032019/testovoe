@@ -3,6 +3,7 @@ package com.example.demo.controllers;
 import com.example.demo.Utils.EndPoint;
 import com.example.demo.datebase.Display;
 import com.example.demo.datebase.DisplayRepository;
+import com.example.demo.exception.BadRequestException;
 import lombok.AccessLevel;
 import lombok.experimental.FieldDefaults;
 import org.springframework.web.bind.annotation.*;
@@ -30,7 +31,12 @@ public class DisplayController {
     public void updateProduct(
             @PathVariable(value = "item_id") String item_id,
             @RequestBody() Display item) {
-        Long id = Long.valueOf(item_id); // todo проверку
+        Long id;
+        try {
+            id = Long.valueOf(item_id);
+        }catch (NumberFormatException ex){
+            throw new BadRequestException("bad request");
+        }
         item.setId(id);
         displayRepository.save(item);
     }
@@ -44,7 +50,12 @@ public class DisplayController {
     public Display getProduct(
             @PathVariable(value = "item_id") String item_id
     ) {
-        Long id = Long.valueOf(item_id);
+        Long id;
+        try {
+            id = Long.valueOf(item_id);
+        }catch (NumberFormatException ex){
+            throw new BadRequestException("bad request");
+        }
         Optional<Display> item = displayRepository.findById(id);
         return item.orElse(null);
     }

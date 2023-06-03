@@ -10,5 +10,5 @@ import lombok.Setter;
 @Setter
 public class Display extends AbstractBaseEntityProduct {
     @Column()
-    Integer Diagonal;
+    Integer diagonal;
 }
